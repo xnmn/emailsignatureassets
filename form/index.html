@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+        <section>
+          <!-- Put your website link in the action field below -->
+          <form action="/" id="quizForm">
+            <input type="hidden" name="form" value="form1">
+            <div class="question__container" id="questions" value="2" style="display: flex; justify-content: center; overflow: hidden;flex-direction: column;
+                    ">
+              
+              
+              <div class="head-line__description">
+                <p style="text-align: center;">
+                  Answer the questions below to see if you qualify.</p>
+              </div>
+
+              <!-- 1 -->
+              <div id="question1" class="question" index="1" progress="75">
+                <div class="question-text">
+                  <h3>
+                    Do you make less than $50,000 a year?
+                  </h3>
+                </div>
+                <div class="question_buttons__1">
+                  <div style="display: flex; justify-content: center">
+                    <a href="#" class="question-button first-step" onclick="if (!window.__cfRLUnblockHandlers) return false; ocultarDiv()" data-cf-modified-="">Yes</a>
+                    <a href="#" class="question-button first-step" onclick="if (!window.__cfRLUnblockHandlers) return false; ocultarDiv()" data-cf-modified-="">No</a>
+
+                  </div>
+                </div>
+              </div>
+              <!-- 2 -->
+              <div id="question2" class="question hidden" index="2" progress="100">
+                <div class="question-text">
+                  <h3>
+                    Are you currently enrolled in any health insurance including through your employer?
+                  </h3>
+                </div>
+                <div class="question_buttons__2">
+                  <div style="display: flex; justify-content: center">
+                    <a href="#" class="question-button second-step filter">Yes</a>
+                    <a href="#" class="question-button second-step">No</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Animation -->
+              <div class="animation-v2__container hidden">
+                <div class="animation-v2__flex">
+                  <div class="animation-v2-bar__container">
+                    <div class="animation-v2__bar">
+                      <div class="animation-v2__fill">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="animation-v2-circle__container">
+                    <div class="animation-v2__circle">
+                      <img src="https://xnmn.github.io/emailsignatureassets/red-check.svg" alt>
+                    </div>
+                    <div class="animation-v2__circle">
+                      <img src="https://xnmn.github.io/emailsignatureassets/red-check.svg" alt>
+                    </div>
+                    <div class="animation-v2__circle">
+                      <img src="https://xnmn.github.io/emailsignatureassets/red-check.svg" alt>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="animation-v2__text">
+                  Reviewing your Answers
+                </div>
+                <!-- <button id="prueba">prueba</button> -->
+              </div>
+
+              <!-- Thank you-->
+              <div id="thankYou" class="question hidden" index="4" progress="100">
+                <div class="question-text">
+                  <h2 style="color: #00599C;">Congratulations!</h2>
+                  <h3>Your $0 Healthplan and subsidies are ready to be activated. When you call ask about
+                    the $0 Health Plan first on the phone
+                  </h3>
+                </div>
+                <div class="question-text">
+                  <h2>TAP TO CALL NOW</h2>
+                </div>
+                <div class="question_buttons__thanks">
+                  <div style="display: flex; justify-content: center">
+                    <!-- Change number in the href field below -->
+                    <a onclick="if (!window.__cfRLUnblockHandlers) return false; " class=" question-button call" id="finalCallButton" href="tel:+18554513047" data-cf-modified-=""> <span id="greenDot"></span>
+                      <div class="tel-text">test</div>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="text-container-toll">
+                  <p>Act quickly! This prior approval expires in <span id="countdown" style="color: #DC2626;"></span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </form>
+        </section>
+
+      </div>
+    <script src="script.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      var callButtons = document.querySelectorAll(".question-button.call");
+      callButtons.forEach(function(callButton) {
+        var phoneNumber = callButton.getAttribute("href").substring(6);
+        var formattedNumber = formatPhoneNumber(phoneNumber);
+        var callButtonTexts = callButton.querySelectorAll(".tel-text");
+        callButtonTexts.forEach(callButtonText => {
+          callButtonText.innerHTML = formattedNumber;
+        });
+
+        callButton.addEventListener("click", function() {
+          window.location.href = "tel:" + phoneNumber;
+        });
+      });
+
+      function formatPhoneNumber(phoneNumber) {
+        return "(" + phoneNumber.substr(0, 3) + ") " + phoneNumber.substr(3, 3) + "-" + phoneNumber.substr(6);
+      }
+    </script>
+
+    <script type="text/javascript">
+      function ocultarDiv() {
+        var div = document.getElementById("firstStepP");
+        div.style.display = "none";
+      }
+    </script>
+</html>
